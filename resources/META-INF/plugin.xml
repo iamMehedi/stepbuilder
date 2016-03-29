@@ -1,0 +1,42 @@
+<idea-plugin version="2">
+  <id>online.devliving.stepbuilder.generator</id>
+  <name>StepBuilder Generator</name>
+  <version>1.0</version>
+  <vendor email="mehedi@devliving.online" url="http://www.devliving.online">Mehedi Hasan Khan</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <!-- <idea-version since-build="141.0"/> -->
+  <idea-version since-build="123"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+      <action id="online.devliving.stepbuilder.generator.generate"
+              class="online.devliving.stepbuilder.generator.StepBuilderAction"
+              text="Step Builder" description="${project.description}">
+          <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup2"/>
+          <keyboard-shortcut keymap="$default" first-keystroke="shift alt B"/>
+      </action>
+  </actions>
+
+</idea-plugin>
