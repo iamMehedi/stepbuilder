@@ -151,7 +151,7 @@
               class="online.devliving.stepbuilder.generator.StepBuilderAction"
               text="Step Builder" description="Generates a Builder following Step Builder pattern">
           <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup2"/>
-          <keyboard-shortcut keymap="$default" first-keystroke="shift cmd B"/>
+          <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl S"/>
       </action>
   </actions>
 

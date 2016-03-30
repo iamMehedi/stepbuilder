@@ -130,7 +130,7 @@ Download the plugin jar `stepbuilder.jar` and select "Install Plugin From Disk" 
 
 ### Usage
 
-Use `Shift+Alt+B` or `Alt+Insert` and select `Step Builder`. Choose the mandatory fields
+Use `Shift+Ctrl+S` or `Alt+Insert` and select `Step Builder`. Choose the mandatory fields
 (the fields that must be set for an object of this class) and press `OK`.
 
 ### Rate
