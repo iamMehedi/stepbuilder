@@ -74,7 +74,7 @@ public class StepBuilderHandler implements LanguageCodeInsightActionHandler {
                 return;
             }
             else{
-                final List<PsiFieldMember> optionalFields = new ArrayList<>(existingFields);
+                final List<PsiFieldMember> optionalFields = new ArrayList<PsiFieldMember>(existingFields);
                 optionalFields.removeAll(selectedFields);
 
                 StepBuilderGenerator.generate(project, editor, file, selectedFields, optionalFields);

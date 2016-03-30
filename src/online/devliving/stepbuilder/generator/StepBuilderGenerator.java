@@ -118,7 +118,7 @@ public class StepBuilderGenerator implements Runnable {
         topLevelClass.add(optionalInterface);
 
         //generate mandatory interfaces
-        final List<PsiClassType> mandatoryInterfaceTypes = new ArrayList<>();
+        final List<PsiClassType> mandatoryInterfaceTypes = new ArrayList<PsiClassType>();
         if(mandatoryFields != null && !mandatoryFields.isEmpty()){
             PsiClassType returnType = optionalInterfaceType;
 
@@ -481,7 +481,7 @@ public class StepBuilderGenerator implements Runnable {
     private PsiClass findOrCreateBuilderClass(final PsiClass topLevelClass, Collection<PsiClassType> interfaces, PsiClassType optionalInterface) {
         final PsiClass builderClass = topLevelClass.findInnerClassByName(BUILDER_CLASS_NAME, false);
         if (builderClass == null) {
-            List<PsiClassType> types = new ArrayList<>(interfaces);
+            List<PsiClassType> types = new ArrayList<PsiClassType>(interfaces);
             types.add(optionalInterface);
 
             return createBuilderClass(topLevelClass, types);

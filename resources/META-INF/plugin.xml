@@ -5,13 +5,129 @@
   <vendor email="mehedi@devliving.online" url="http://www.devliving.online">Mehedi Hasan Khan</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+    <p>This plugin generates a Builder class following the Step Builder pattern so that you can build instances of
+    your class more easily in a guided manner. </p>
+
+    <em>Here is an example:</em>
+    <pre>
+    <code>
+
+   public class Server{
+
+    final static int DEFAULT_PORT = 8080;
+
+    private String protocol;
+    private String url;
+    private String ipAddress;
+    private int port;
+    private String description;
+    private long uptime;
+
+    private Server(Builder builder) {
+        protocol = builder.protocol;
+        url = builder.url;
+        ipAddress = builder.ipAddress;
+        port = builder.port;
+        description = builder.description;
+        uptime = builder.uptime;
+    }
+
+    public static IProtocol builder() {
+        return new Builder();
+    }
+
+
+    public interface IBuild {
+        Server build();
+    }
+
+    public interface IUptime {
+        IBuild withUptime(long val);
+    }
+
+    public interface IDescription {
+        IUptime withDescription(String val);
+    }
+
+    public interface IPort {
+        IDescription withPort(int val);
+    }
+
+    public interface IIpAddress {
+        IPort withIpAddress(String val);
+    }
+
+    public interface IUrl {
+        IIpAddress withUrl(String val);
+    }
+
+    public interface IProtocol {
+        IUrl withProtocol(String val);
+    }
+
+    public static final class Builder implements IUptime, IDescription, IPort, IIpAddress, IUrl, IProtocol, IBuild {
+        private long uptime;
+        private String description;
+        private int port;
+        private String ipAddress;
+        private String url;
+        private String protocol;
+
+        private Builder() {
+        }
+
+        @Override
+        public IBuild withUptime(long val) {
+            uptime = val;
+            return this;
+        }
+
+        @Override
+        public IUptime withDescription(String val) {
+            description = val;
+            return this;
+        }
+
+        @Override
+        public IDescription withPort(int val) {
+            port = val;
+            return this;
+        }
+
+        @Override
+        public IPort withIpAddress(String val) {
+            ipAddress = val;
+            return this;
+        }
+
+        @Override
+        public IIpAddress withUrl(String val) {
+            url = val;
+            return this;
+        }
+
+        @Override
+        public IUrl withProtocol(String val) {
+            protocol = val;
+            return this;
+        }
+
+        public Server build() {
+            return new Server(this);
+        }
+    }
+}
+    </code>
+    </pre>
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      <table>
+      <tr>
+      <td> 1.0.0</td>
+      <td>First release</td>
+      </tr>
+      </table>
     ]]>
   </change-notes>
 
@@ -33,9 +149,9 @@
     <!-- Add your actions here -->
       <action id="online.devliving.stepbuilder.generator.generate"
               class="online.devliving.stepbuilder.generator.StepBuilderAction"
-              text="Step Builder" description="${project.description}">
+              text="Step Builder" description="Generates a Builder following Step Builder pattern">
           <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup2"/>
-          <keyboard-shortcut keymap="$default" first-keystroke="shift alt B"/>
+          <keyboard-shortcut keymap="$default" first-keystroke="shift cmd B"/>
       </action>
   </actions>
 
