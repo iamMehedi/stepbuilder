@@ -135,7 +135,7 @@ Use `Shift+Ctrl+S` or `Alt+Insert` and select `Step Builder`. Choose the mandato
 
 ### Rate
 
-If you enjoy this plugin, please rate it on it's [plugins.jetbrains.com page](http://plugins.jetbrains.com/plugin/).
+If you enjoy this plugin, please rate it on it's [plugins.jetbrains.com page](http://plugins.jetbrains.com/plugin/8276).
 
 ### License
 
