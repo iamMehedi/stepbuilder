@@ -143,4 +143,4 @@ Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/
 
 The source code is based on the code from the [innerbuilder plugin](https://github.com/analytically/innerbuilder).
 
-© [Mehedi Hasa Khan](http://devliving.online/)
+© [Mehedi Hasan Khan](http://devliving.online/)
