@@ -5,7 +5,7 @@ StepBuilder Generator
 plugin that adds a 'Step Builder' action to the Generate menu (Alt+Insert)
 which generates a Builder class which follows the Step Builder pattern. You can
 read about the Step Builder pattern and why it might be a little more effective than
-the usual Builder pattern [here](http://www.jayway.com/2012/02/07/builder-pattern-with-a-twist/).
+the usual Builder pattern [here](http://devliving.online/stepbuilder-builder-that-guides-you-through-the-steps/).
 
 ![screenshot](screenshot_1.png)
 

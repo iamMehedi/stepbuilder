@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>online.devliving.stepbuilder.generator</id>
   <name>StepBuilder Generator</name>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <vendor email="mehedi@devliving.online" url="http://www.devliving.online">Mehedi Hasan Khan</vendor>
 
   <description><![CDATA[
@@ -126,6 +126,11 @@
       <tr>
       <td> 1.0.0</td>
       <td>First release</td>
+      </tr>
+
+      <tr>
+      <td> 1.0.1</td>
+      <td>Generated interfaces aren't public</td>
       </tr>
       </table>
     ]]>

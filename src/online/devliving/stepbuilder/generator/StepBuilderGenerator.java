@@ -213,7 +213,12 @@ public class StepBuilderGenerator implements Runnable {
     }
 
     private PsiClass createBuildStepInterface(){
-        return psiElementFactory.createInterface(INTERFACE_NAME_PREFIX + BUILD_STEP_INTERFACE_NAME);
+        PsiClass buildStep =  psiElementFactory.createInterface(INTERFACE_NAME_PREFIX + BUILD_STEP_INTERFACE_NAME);
+        if(buildStep.getModifierList() != null){
+            buildStep.getModifierList().setModifierProperty(PsiModifier.PUBLIC, false);
+        }
+
+        return buildStep;
     }
 
     /**
@@ -229,6 +234,9 @@ public class StepBuilderGenerator implements Runnable {
                 BUILDER_SETTER_ALTERNATIVE_PARAMETER_NAME:BUILDER_SETTER_DEFAULT_PARAMETER_NAME;
 
         PsiClass mInterface = psiElementFactory.createInterface(INTERFACE_NAME_PREFIX + capitalizedFieldName);
+        if(mInterface.getModifierList() != null){
+            mInterface.getModifierList().setModifierProperty(PsiModifier.PUBLIC, false);
+        }
 
         PsiMethod fieldMethod = psiElementFactory.createMethodFromText(String.format("%s %s(%s %s);", returnType.getPresentableText(),
                 methodName, forMember.getElement().getType().getPresentableText(), paramName), mInterface);
