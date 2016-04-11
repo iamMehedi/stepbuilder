@@ -83,7 +83,7 @@ public class StepBuilderGenerator implements Runnable {
 
         //generate the interfaces
         //generate optional interface
-        final PsiClass optionalInterface = createBuildStepInterface();
+        final PsiClass optionalInterface = createBuildStepInterface(options.contains(StepBuilderOption.PUBLIC_INTERFACES));
         final PsiClassType optionalInterfaceType = psiElementFactory.createType(optionalInterface);
 
         if(optionalFields != null && !optionalFields.isEmpty()) {
@@ -130,7 +130,7 @@ public class StepBuilderGenerator implements Runnable {
                     nonFinalFields.add(fieldMember);
                     mandatoryNonfinalFields.add(fieldMember);
 
-                    PsiClass mInterface = generateMandatoryInterface(fieldMember, returnType);
+                    PsiClass mInterface = generateMandatoryInterface(fieldMember, returnType, options.contains(StepBuilderOption.PUBLIC_INTERFACES));
                     topLevelClass.add(mInterface);
 
                     returnType = psiElementFactory.createType(mInterface);
@@ -212,10 +212,10 @@ public class StepBuilderGenerator implements Runnable {
         CodeStyleManager.getInstance(project).reformat(builderClass);
     }
 
-    private PsiClass createBuildStepInterface(){
+    private PsiClass createBuildStepInterface(boolean isPublic){
         PsiClass buildStep =  psiElementFactory.createInterface(INTERFACE_NAME_PREFIX + BUILD_STEP_INTERFACE_NAME);
         if(buildStep.getModifierList() != null){
-            buildStep.getModifierList().setModifierProperty(PsiModifier.PUBLIC, false);
+            buildStep.getModifierList().setModifierProperty(PsiModifier.PUBLIC, isPublic);
         }
 
         return buildStep;
@@ -227,7 +227,7 @@ public class StepBuilderGenerator implements Runnable {
      * @param returnType - should be an interface type
      * @return
      */
-    private PsiClass generateMandatoryInterface(PsiFieldMember forMember, PsiType returnType){
+    private PsiClass generateMandatoryInterface(PsiFieldMember forMember, PsiType returnType, boolean isPublic){
         String capitalizedFieldName = StepBuilderUtils.capitalize(forMember.getElement().getName());
         String methodName = String.format("with%s", capitalizedFieldName);
         String paramName = BUILDER_SETTER_DEFAULT_PARAMETER_NAME.equals(forMember.getElement().getName())?
@@ -235,7 +235,7 @@ public class StepBuilderGenerator implements Runnable {
 
         PsiClass mInterface = psiElementFactory.createInterface(INTERFACE_NAME_PREFIX + capitalizedFieldName);
         if(mInterface.getModifierList() != null){
-            mInterface.getModifierList().setModifierProperty(PsiModifier.PUBLIC, false);
+            mInterface.getModifierList().setModifierProperty(PsiModifier.PUBLIC, isPublic);
         }
 
         PsiMethod fieldMethod = psiElementFactory.createMethodFromText(String.format("%s %s(%s %s);", returnType.getPresentableText(),

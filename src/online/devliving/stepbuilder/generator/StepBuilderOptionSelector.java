@@ -44,6 +44,14 @@ public final class StepBuilderOptionSelector {
                         .withMnemonic('c')
                         .withTooltip("Add Javadoc to generated builder class and methods")
                         .build());
+
+        options.add(
+                SelectorOption.newBuilder()
+                        .withOption(StepBuilderOption.PUBLIC_INTERFACES)
+                        .withCaption("Make Interfaces public")
+                        .withMnemonic('p')
+                        .withTooltip("Make generated interfaces public")
+                        .build());
         return options;
     }
 
