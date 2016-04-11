@@ -4,7 +4,8 @@ public enum StepBuilderOption {
 
     FINAL_SETTERS("finalSetters"),
     COPY_CONSTRUCTOR("copyConstructor"),
-    WITH_JAVADOC("withJavadoc");
+    WITH_JAVADOC("withJavadoc"),
+    PUBLIC_INTERFACES("publicInterface");
 
     private final String property;
 
